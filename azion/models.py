@@ -10,6 +10,10 @@ def to_json(response):
     return response.json()
 
 
+def filter_none(data):
+    return {key: value for key, value in data.items() if value is not None}
+
+
 class Token(object):
     """Model representing the authorized token retrieved
     from the API.
@@ -96,4 +100,4 @@ class Configuration(object):
         self.digital_certificate = data['digital_certificate']
         self.cname_access_only = data['cname_access_only']
         self.rawlogs = data['rawlogs']
-        self.cnames = data['cnames']
+        self.cname = data['cname']
