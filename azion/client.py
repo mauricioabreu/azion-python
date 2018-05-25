@@ -38,7 +38,19 @@ class Session(requests.Session):
 
 
 class Azion(object):
-    """Entrypoint to work with Azion API."""
+    """Entrypoint to work with Azion API.
+
+    To start using this client, we need a valid token.
+    For this we can use the `authorize` function:
+
+    .. code-block:: python
+
+        from azion.api import authorize, login
+        auth = authorize(user, password)
+        azion = login(auth.token)
+
+    Now you can use all API resources.
+    """
 
     def __init__(self, token=None, session=None):
         """Create a new Azion API instance.
