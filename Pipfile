@@ -8,6 +8,7 @@ pycodestyle = "*"
 pylint = "*"
 pytest = "*"
 sphinx = "*"
+coverage = "*"
 
 [packages]
 requests = "*"
