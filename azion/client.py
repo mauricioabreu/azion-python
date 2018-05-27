@@ -130,7 +130,8 @@ class Azion(object):
         """
         data = {
             'name': name, 'origin_address': origin_address,
-            'origin_host_header': origin_host_header, 'cname': cname,
+            'origin_host_header': origin_host_header,
+            'cname': cname, 'cname_access_only': cname_access_only,
             'delivery_protocol': delivery_protocol,
             'digital_certificate': digital_certificate,
             'origin_protocol_policy': origin_protocol_policy,

@@ -57,6 +57,7 @@ class TestAzionClient(object):
                 'name': 'Dummy configuration',
                 'origin_address': 'www.example.com',
                 'origin_host_header': 'ww2.example.com',
+                'cname_access_only': False,
                 'delivery_protocol': 'http',
                 'origin_protocol_policy': 'preserve',
                 'browser_cache_settings': False,
