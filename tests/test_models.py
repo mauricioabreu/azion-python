@@ -1,3 +1,5 @@
+import datetime
+
 from azion import models
 
 
@@ -17,3 +19,8 @@ class TestModels(object):
         instance = models.instance_from_json(
             DummyModel, {'foobar': 1})
         assert isinstance(instance, DummyModel)
+
+    def test_to_date(self):
+        dt = datetime.datetime(
+            2016, 11, 18, 14, 10, 58, 24903, tzinfo=datetime.timezone.utc)
+        assert dt == models.to_date('2016-11-18T14:10:58.024903Z')

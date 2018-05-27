@@ -1,3 +1,6 @@
+import pendulum
+
+
 def instance_from_json(model, data):
     if not data:
         return None
@@ -12,6 +15,18 @@ def to_json(response):
 
 def filter_none(data):
     return {key: value for key, value in data.items() if value is not None}
+
+
+def to_date(date):
+    """Convert a string to a datetime object.
+
+    :param str date: ISO 8601 string.
+    :returns:
+        datetime object
+    :rtype:
+        pendulum.datetime.DateTime
+    """
+    return pendulum.parse(date)
 
 
 class Token(object):
@@ -39,8 +54,8 @@ class Token(object):
 
     def load_data(self, data):
         self.token = data['token']
-        self.created_at = data['created_at']
-        self.expires_at = data['expires_at']
+        self.created_at = to_date(data['created_at'])
+        self.expires_at = to_date(data['expires_at'])
 
     def __repr__(self):
         return f'<TokenAuth [{self.token[:6]}]>'

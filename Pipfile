@@ -12,6 +12,7 @@ coverage = "*"
 
 [packages]
 requests = "*"
+pendulum = "*"
 
 [requires]
 python_version = "3.6"
