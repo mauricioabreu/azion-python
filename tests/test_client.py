@@ -37,3 +37,31 @@ class TestAzionClient(object):
         client.authorize('foo', 'bar')
         mocked_session.post.assert_called_once_with(
             'https://api.azion.net/tokens', data={}, auth=('foo', 'bar'))
+
+    def test_get_configuration(self):
+        mocked_session = create_mocked_session()
+        client = Azion(session=mocked_session)
+        client.get_configuration(1)
+        mocked_session.get.assert_called_once_with(
+            'https://api.azion.net/content_delivery/configurations/1'
+        )
+
+    def test_create_configuration(self):
+        mocked_session = create_mocked_session()
+        client = Azion(session=mocked_session)
+        client.create_configuration(
+            'Dummy configuration', 'www.example.com', 'ww2.example.com')
+        mocked_session.post.assert_called_once_with(
+            'https://api.azion.net/content_delivery/configurations',
+            json={
+                'name': 'Dummy configuration',
+                'origin_address': 'www.example.com',
+                'origin_host_header': 'ww2.example.com',
+                'delivery_protocol': 'http',
+                'origin_protocol_policy': 'preserve',
+                'browser_cache_settings': False,
+                'browser_cache_settings_maximum_ttl': 0,
+                'cdn_cache_settings': 'honor',
+                'cdn_cache_settings_maximum_ttl': 0
+            }
+        )
