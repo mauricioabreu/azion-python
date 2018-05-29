@@ -31,10 +31,18 @@ class Session(requests.Session):
             'Accept-Charset': 'utf-8',
             'Content-Type': 'application/json'
         })
-        self.base_url = 'https://api.azion.net/'
+        self.base_url = 'https://api.azion.net'
 
     def token_auth(self, token):
         self.auth = AuthToken(token)
+
+    def build_url(self, *args, **kwargs):
+        """Build a URL depending on the `base_url`
+        attribute."""
+        params = [kwargs.get('base_url') or self.base_url]
+        params.extend(args)
+        params = map(str, params)
+        return '/'.join(params)
 
 
 class Azion(object):
@@ -79,7 +87,7 @@ class Azion(object):
         :param str password:
             password
         """
-        url = f'{self.session.base_url}tokens'
+        url = self.session.build_url('tokens')
         response = self.session.post(url, data={}, auth=(username, password))
         json = to_json(response)
         return instance_from_json(Token, json)
@@ -89,7 +97,8 @@ class Azion(object):
 
         :param int configuration_id: configuration id
         """
-        url = f'{self.session.base_url}content_delivery/configurations/{configuration_id}'
+        url = self.session.build_url(
+            'content_delivery', 'configurations', configuration_id)
         response = self.session.get(url)
         json = to_json(response)
         return instance_from_json(Configuration, json)
@@ -141,7 +150,7 @@ class Azion(object):
             'cdn_cache_settings_maximum_ttl': cdn_cache_settings_maximum_ttl
         }
 
-        url = f'{self.session.base_url}content_delivery/configurations'
+        url = self.session.build_url('content_delivery', 'configurations')
         response = self.session.post(url, json=filter_none(data))
         json = to_json(response)
         return instance_from_json(Configuration, json)

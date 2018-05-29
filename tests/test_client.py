@@ -5,6 +5,13 @@ import requests
 from azion.client import Azion, Session
 
 
+def build_url(*args, **kwargs):
+    """Mock `build_url` by injecting the real function
+    right in the session object.
+    """
+    return Session().build_url(*args, **kwargs)
+
+
 def create_mocked_session():
     MockedSession = mock.create_autospec(Session)
     session = MockedSession()
@@ -18,7 +25,8 @@ def create_mocked_session():
     session.patch.return_value = None
     session.post.return_value = None
     session.put.return_value = None
-    session.base_url = 'https://api.azion.net/'
+    session.base_url = 'https://api.azion.net'
+    session.build_url = build_url
 
     return session
 
