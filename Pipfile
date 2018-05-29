@@ -9,6 +9,7 @@ pylint = "*"
 pytest = "*"
 sphinx = "*"
 coverage = "*"
+proselint = "*"
 
 [packages]
 requests = "*"
