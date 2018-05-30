@@ -14,7 +14,7 @@ handling Python objects (models) instead of raw JSON responses.
 
 .. code-block:: python
 
-    from azion.api import authorize, login
+    from azion import authorize, login
 
     # Retrieve a new token
     auth = authorize('myemail@mail.com', 'mysecrepassword')
