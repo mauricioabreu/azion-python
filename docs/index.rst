@@ -36,7 +36,7 @@ Installation
 
 .. code-block:: console
 
-    $ pip install azion-python
+    $ pipenv install azion-python
 
 API
 ===
