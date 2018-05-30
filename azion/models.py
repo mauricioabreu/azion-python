@@ -10,7 +10,7 @@ def instance_from_json(model, data):
 def many_of(model, data):
     if not data:
         return []
-    return [instance_from_json(model, data) for
+    return [instance_from_json(model, resource) for
             resource in data]
 
 
