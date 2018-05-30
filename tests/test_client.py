@@ -54,6 +54,14 @@ class TestAzionClient(object):
             'https://api.azion.net/content_delivery/configurations/1'
         )
 
+    def test_list_configurations(self):
+        mocked_session = create_mocked_session()
+        client = Azion(session=mocked_session)
+        client.list_configurations()
+        mocked_session.get.assert_called_once_with(
+            'https://api.azion.net/content_delivery/configurations'
+        )
+
     def test_create_configuration(self):
         mocked_session = create_mocked_session()
         client = Azion(session=mocked_session)

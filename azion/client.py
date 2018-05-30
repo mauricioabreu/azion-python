@@ -3,7 +3,7 @@ import requests
 
 from azion.models import (
     Configuration, Token, as_boolean,
-    filter_none, instance_from_json, to_json)
+    filter_none, instance_from_json, many_of, to_json)
 
 
 class AuthToken(requests.auth.AuthBase):
@@ -103,6 +103,13 @@ class Azion(object):
         response = self.session.get(url)
         json = to_json(response)
         return instance_from_json(Configuration, json)
+
+    def list_configurations(self):
+        """List configurations."""
+        url = self.session.build_url('content_delivery', 'configurations')
+        response = self.session.get(url)
+        json = to_json(response)
+        return many_of(Configuration, json)
 
     def create_configuration(self, name, origin_address, origin_host_header,
                              cname=None, cname_access_only=False,

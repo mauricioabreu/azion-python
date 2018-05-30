@@ -7,6 +7,13 @@ def instance_from_json(model, data):
     return model(data)
 
 
+def many_of(model, data):
+    if not data:
+        return []
+    return [instance_from_json(model, data) for
+            resource in data]
+
+
 def to_json(response):
     if not response:
         return None
