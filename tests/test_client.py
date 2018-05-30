@@ -74,3 +74,11 @@ class TestAzionClient(object):
                 'cdn_cache_settings_maximum_ttl': 0
             }
         )
+
+    def test_delete_configuration(self):
+        mocked_session = create_mocked_session()
+        client = Azion(session=mocked_session)
+        client.delete_configuration(1)
+        mocked_session.delete.assert_called_once_with(
+            'https://api.azion.net/content_delivery/configurations/1'
+        )

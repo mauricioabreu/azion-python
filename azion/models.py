@@ -13,6 +13,12 @@ def to_json(response):
     return response.json()
 
 
+def as_boolean(response, expected_status_code):
+    if response:
+        return response.status_code == expected_status_code
+    return False
+
+
 def filter_none(data):
     return {key: value for key, value in data.items() if value is not None}
 

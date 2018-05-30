@@ -2,7 +2,8 @@
 import requests
 
 from azion.models import (
-    Configuration, Token, filter_none, instance_from_json, to_json)
+    Configuration, Token, as_boolean,
+    filter_none, instance_from_json, to_json)
 
 
 class AuthToken(requests.auth.AuthBase):
@@ -154,3 +155,14 @@ class Azion(object):
         response = self.session.post(url, json=filter_none(data))
         json = to_json(response)
         return instance_from_json(Configuration, json)
+
+    def delete_configuration(self, configuration_id):
+        """Delete a configuration.
+
+        :param int configuration_id:
+            Configuration ID.
+        """
+        url = self.session.build_url(
+            'content_delivery', 'configurations', configuration_id)
+        response = self.session.delete(url)
+        return as_boolean(response, 204)
