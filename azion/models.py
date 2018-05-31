@@ -119,6 +119,9 @@ class Configuration(object):
     def __init__(self, data):
         self.load_data(data)
 
+    def __repr__(self):
+        return f'<Configuration [{self.name} ({self.domain_name})]>'
+
     def load_data(self, data):
         self.id = data['id']
         self.name = data['name']
@@ -126,6 +129,6 @@ class Configuration(object):
         self.active = data['active']
         self.delivery_protocol = data['delivery_protocol']
         self.digital_certificate = data['digital_certificate']
+        self.cname = data['cname']
         self.cname_access_only = data['cname_access_only']
         self.rawlogs = data['rawlogs']
-        self.cname = data['cname']

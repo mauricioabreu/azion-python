@@ -24,3 +24,16 @@ class TestModels(object):
         dt = datetime.datetime(
             2016, 11, 18, 14, 10, 58, 24903, tzinfo=datetime.timezone.utc)
         assert dt == models.to_date('2016-11-18T14:10:58.024903Z')
+
+
+class TestConfiguration(object):
+
+    def test_repr(self):
+        data = {'id': 1, 'name': 'My cool configuration',
+                'domain_name': '11111a.ha.azion.net', 'active': True,
+                'delivery_protocol': 'http,https',
+                'digital_certificate': None,
+                'cname_access_only': False, 'rawlogs': False,
+                'cname': ''}
+        configuration = models.Configuration(data)
+        assert repr(configuration) == '<Configuration [My cool configuration (11111a.ha.azion.net)]>'  # noqa
