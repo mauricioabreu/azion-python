@@ -27,9 +27,12 @@ handling Python objects (models) instead of raw JSON responses.
 
     print(configuration.name)
 
+You can checkout more examples throught the documentation.
+
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    :maxdepth: 2
+
+    examples/configurations
 
 Installation
 ============
