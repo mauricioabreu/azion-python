@@ -173,3 +173,46 @@ class Azion(object):
             'content_delivery', 'configurations', configuration_id)
         response = self.session.delete(url)
         return as_boolean(response, 204)
+
+    def partial_update_configuration(self, configuration_id, name=None,
+                                     cname=None, cname_access_only=None,
+                                     delivery_protocol=None,
+                                     digital_certificate=None,
+                                     rawlogs=None, active=None):
+        """Partially updates a configuration.
+
+        One or more fields can be updated, without changing the current
+        values of the other fields of this configuration.
+
+        :param str name: human-readable name for the configuration.
+        :param list cname: a list os strings containing all cnames.
+            Default empty string.
+        :param bool cname_access_only: defines whether the content delivery
+            should be done only through cnames. Default to False.
+        :param str delivery_protocol: defines the HTTP protocol used
+            to deliver content. Default to http.
+        :param int digital_certificate: Digital Certificate ID.
+            Check `Digital Certificates`_ for more info.
+        :param boolean rawlogs:
+            Whether this configuration will store logs in the Cloud Storage.
+        :param boolean active:
+            Whether this configuration is active.
+
+        .. _Digital Certificates:
+            https://www.azion.com.br/developers/documentacao/produtos/content-delivery/digital-certificates/
+        """
+
+        data = {
+            'name': name,
+            'cname': cname, 'cname_access_only': cname_access_only,
+            'delivery_protocol': delivery_protocol,
+            'digital_certificate': digital_certificate,
+            'rawlogs': rawlogs,
+            'active': active
+        }
+
+        url = self.session.build_url(
+            'content_delivery', 'configurations', configuration_id)
+        response = self.session.patch(url, json=filter_none(data))
+        json = to_json(response)
+        return instance_from_json(Configuration, json)

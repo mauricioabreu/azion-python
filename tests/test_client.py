@@ -90,3 +90,15 @@ class TestAzionClient(object):
         mocked_session.delete.assert_called_once_with(
             'https://api.azion.net/content_delivery/configurations/1'
         )
+
+    def test_partial_update_configuration(self):
+        mocked_session = create_mocked_session()
+        client = Azion(session=mocked_session)
+        client.partial_update_configuration(1, name='My cool configuration', active=False)
+        mocked_session.patch.assert_called_once_with(
+            'https://api.azion.net/content_delivery/configurations/1',
+            json={
+                'name': 'My cool configuration',
+                'active': False
+            }
+        )
