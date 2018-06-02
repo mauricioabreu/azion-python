@@ -1,5 +1,9 @@
 """Exceptions used to describe errors when handling
-Azion API requests/responses."""
+Azion API requests/responses.
+
+Documentation of possible errors to be returned from the API can
+be found here: https://www.azion.com.br/developers/api-v1/#status-codes
+"""
 
 
 class AzionException(Exception):
@@ -84,8 +88,26 @@ class MethodNotAllowed(AzionError):
     pass
 
 
+class NotAcceptable(object):
+    """Indicate that a response matching the list of acceptable values
+    defined in Accept-Charset and Accept-Language cannot be served.
+
+    More info here: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/406
+    """
+    pass
+
+
 class Conflict(AzionError):
     """Indicate a request conflict with current state of the server.
+    """
+    pass
+
+
+class TooManyRequests(AzionError):
+    """Indicate he user has sent too many requests
+    in a given amount of time ("rate limiting").
+
+    More info here: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429
     """
     pass
 
@@ -96,7 +118,9 @@ error_handlers = {
     403: Forbidden,
     404: NotFound,
     404: MethodNotAllowed,
-    409: Conflict
+    406: NotAcceptable,
+    409: Conflict,
+    429: TooManyRequests
 }
 
 
