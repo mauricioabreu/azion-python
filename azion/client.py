@@ -90,7 +90,7 @@ class Azion(object):
         """
         url = self.session.build_url('tokens')
         response = self.session.post(url, data={}, auth=(username, password))
-        json = to_json(response)
+        json = to_json(response, 201)
         return instance_from_json(Token, json)
 
     def get_configuration(self, configuration_id):
@@ -101,14 +101,14 @@ class Azion(object):
         url = self.session.build_url(
             'content_delivery', 'configurations', configuration_id)
         response = self.session.get(url)
-        json = to_json(response)
+        json = to_json(response, 200)
         return instance_from_json(Configuration, json)
 
     def list_configurations(self):
         """List configurations."""
         url = self.session.build_url('content_delivery', 'configurations')
         response = self.session.get(url)
-        json = to_json(response)
+        json = to_json(response, 200)
         return many_of(Configuration, json)
 
     def create_configuration(self, name, origin_address, origin_host_header,
@@ -160,7 +160,7 @@ class Azion(object):
 
         url = self.session.build_url('content_delivery', 'configurations')
         response = self.session.post(url, json=filter_none(data))
-        json = to_json(response)
+        json = to_json(response, 201)
         return instance_from_json(Configuration, json)
 
     def delete_configuration(self, configuration_id):
@@ -214,5 +214,5 @@ class Azion(object):
         url = self.session.build_url(
             'content_delivery', 'configurations', configuration_id)
         response = self.session.patch(url, json=filter_none(data))
-        json = to_json(response)
+        json = to_json(response, 200)
         return instance_from_json(Configuration, json)

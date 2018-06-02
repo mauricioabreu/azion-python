@@ -1,5 +1,7 @@
 import pendulum
 
+from azion import exceptions
+
 
 def instance_from_json(model, data):
     if not data:
@@ -14,9 +16,17 @@ def many_of(model, data):
             resource in data]
 
 
-def to_json(response):
-    if not response:
+def to_json(response, excepted_status_code):
+    # Bad request is interpreted as a falsey value.
+    # So we compare it with `None`.
+    if response is None:
         return None
+
+    status_code = response.status_code
+    if status_code != excepted_status_code:
+        if status_code >= 400:
+            raise exceptions.AzionError
+
     return response.json()
 
 
