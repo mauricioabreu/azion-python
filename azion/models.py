@@ -25,14 +25,17 @@ def to_json(response, excepted_status_code):
     status_code = response.status_code
     if status_code != excepted_status_code:
         if status_code >= 400:
-            raise exceptions.AzionError
+            raise exceptions.handle_error(response)
 
     return response.json()
 
 
 def as_boolean(response, expected_status_code):
     if response:
-        return response.status_code == expected_status_code
+        if response.status_code == expected_status_code:
+            return True
+        if response.status_code >= 400:
+            raise exceptions.handle_error(response)
     return False
 
 
