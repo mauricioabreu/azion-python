@@ -16,7 +16,20 @@ def many_of(model, data):
             resource in data]
 
 
-def to_json(response, excepted_status_code):
+def decode_json(response, excepted_status_code):
+    """Decode a JSON response.
+
+    It wraps the `requests` json response decoder and
+    adds a goodie to raise proper errors when the status
+    code of the HTTP requests indicates client issues.
+
+    :param object response:
+        A `requests` response object.
+    :param int excepted_status_code:
+        HTTP status code expected after making the request.
+        In case it differs, raise a right exception for the error.
+    """
+
     # Bad request is interpreted as a falsey value.
     # So we compare it with `None`.
     if response is None:
