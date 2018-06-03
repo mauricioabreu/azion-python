@@ -3,7 +3,7 @@ import pendulum
 from azion import exceptions
 
 
-def instance_from_json(model, data):
+def instance_from_data(model, data):
     if not data:
         return None
     return model(data)
@@ -12,7 +12,7 @@ def instance_from_json(model, data):
 def many_of(model, data):
     if not data:
         return []
-    return [instance_from_json(model, resource) for
+    return [instance_from_data(model, resource) for
             resource in data]
 
 

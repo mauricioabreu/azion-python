@@ -3,7 +3,7 @@ import requests
 
 from azion.models import (
     Configuration, Token, as_boolean,
-    decode_json, filter_none, instance_from_json, many_of)
+    decode_json, filter_none, instance_from_data, many_of)
 
 
 class AuthToken(requests.auth.AuthBase):
@@ -91,7 +91,7 @@ class Azion(object):
         url = self.session.build_url('tokens')
         response = self.session.post(url, data={}, auth=(username, password))
         json = decode_json(response, 201)
-        return instance_from_json(Token, json)
+        return instance_from_data(Token, json)
 
     def get_configuration(self, configuration_id):
         """Retrieve a configuration.
@@ -102,7 +102,7 @@ class Azion(object):
             'content_delivery', 'configurations', configuration_id)
         response = self.session.get(url)
         json = decode_json(response, 200)
-        return instance_from_json(Configuration, json)
+        return instance_from_data(Configuration, json)
 
     def list_configurations(self):
         """List configurations."""
@@ -161,7 +161,7 @@ class Azion(object):
         url = self.session.build_url('content_delivery', 'configurations')
         response = self.session.post(url, json=filter_none(data))
         json = decode_json(response, 201)
-        return instance_from_json(Configuration, json)
+        return instance_from_data(Configuration, json)
 
     def delete_configuration(self, configuration_id):
         """Delete a configuration.
@@ -215,7 +215,7 @@ class Azion(object):
             'content_delivery', 'configurations', configuration_id)
         response = self.session.patch(url, json=filter_none(data))
         json = decode_json(response, 200)
-        return instance_from_json(Configuration, json)
+        return instance_from_data(Configuration, json)
 
     def replace_configuration(self, configuration_id, name=None,
                               cname=None, cname_access_only=None,
@@ -259,4 +259,4 @@ class Azion(object):
             'content_delivery', 'configurations', configuration_id)
         response = self.session.put(url, json=filter_none(data))
         json = decode_json(response, 200)
-        return instance_from_json(Configuration, json)
+        return instance_from_data(Configuration, json)

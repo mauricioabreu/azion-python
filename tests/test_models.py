@@ -9,14 +9,14 @@ class TestModels(object):
         data = {'foo': False, 'bar': None}
         assert models.filter_none(data) == {'foo': False}
 
-    def test_instance_from_json(self):
+    def test_instance_from_data(self):
 
         class DummyModel(object):
 
             def __init__(self, data):
                 self.data = data
 
-        instance = models.instance_from_json(
+        instance = models.instance_from_data(
             DummyModel, {'foobar': 1})
         assert isinstance(instance, DummyModel)
 
