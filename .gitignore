@@ -1,6 +1,9 @@
 .pytest_cache
 .vscode
 .coverage
+azion_python.egg-info
+build
 env
+dist
 docs/_build
 htmlcov
