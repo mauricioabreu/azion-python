@@ -49,6 +49,14 @@ API
 
     api/index
 
+Contributing
+============
+
+.. toctree::
+    :maxdepth: 2
+
+    contributing/testing
+
 Indices and tables
 ==================
 
