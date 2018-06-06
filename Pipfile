@@ -10,6 +10,7 @@ pytest = "*"
 sphinx = "*"
 coverage = "*"
 proselint = "*"
+betamax = "*"
 
 [packages]
 requests = "*"
