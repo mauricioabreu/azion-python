@@ -81,4 +81,3 @@ class TestConfiguration(object):
 
         with recorder.use_cassette('Configuration_delete'):
             assert client.delete_configuration(1528252734)
-

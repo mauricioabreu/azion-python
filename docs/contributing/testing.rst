@@ -30,5 +30,16 @@ Here is an example on how to test the creation of a new configuration:
                     cname=['www.example-cname.com'], delivery_protocol='http')
             assert isinstance(configuration, Configuration)
 
+Cassettes
+~~~~~~~~~
+
 `Cassettes` are the files used to store/load requests and responses. A good convention is to name them with the resource capitalized
 and the action of the API function in lowercase, for example: ``Configuration_create``
+
+Unit tests
+----------
+
+Fast feedback can be given by unit tests. These are tests used to cover units of code in isolation - they should not depend on other components.
+And to achieve this goal, we must not rely on third party results like JSON responses obtained over a unreliable network.
+
+`Mocking` the response is the right way to go here, ensuring that we called our function with the right parameters.
