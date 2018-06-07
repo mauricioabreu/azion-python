@@ -2,6 +2,8 @@ azion-python is a library to interact with Azion’s ReST API.
 
 With this library you will be able to use the ReST API using a pythonic approach, handling Python objects (models) instead of raw JSON responses.
 
+azion-python is tested using Python 3.6+ only.
+
 Installation
 ------------
 
@@ -23,3 +25,8 @@ Then you can run the test suite:
 ::
 
     $ make test
+
+Documentation
+-------------
+
+There is an online version of the documentation at https://azion-python.readthedocs.io
