@@ -30,6 +30,24 @@ Here is an example on how to test the creation of a new configuration:
                     cname=['www.example-cname.com'], delivery_protocol='http')
             assert isinstance(configuration, Configuration)
 
+To create new tests, you need to export an environment variable named `AZ_TOKEN`.
+If you are using `Bash shell` you can export the variable and then run the tests:
+
+.. code-block:: bash
+
+    AZ_TOKEN='mytoken'
+    make test
+
+Using `Fish shell` like me? No problems:
+
+.. code-block:: fish
+
+    set -x AZ_TOKEN 'mytoken'
+    make test
+
+It is necessary because your new tests will try to hit the production API to fetch the response.
+After executing the test, a new `cassette` will be generated. Your patch must contain these files.
+
 Cassettes
 ~~~~~~~~~
 
