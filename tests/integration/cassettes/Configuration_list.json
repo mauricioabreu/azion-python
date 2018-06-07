@@ -1,0 +1,103 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-06-07T02:26:15",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": [
+            "application/json; version=1"
+          ],
+          "Accept-Charset": [
+            "utf-8"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "token <AUTH_TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "python-requests/2.18.4"
+          ]
+        },
+        "method": "GET",
+        "uri": "https://api.azion.net/content_delivery/configurations"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "[{\"id\":1501191440,\"name\":\"Lala changed via API\",\"domain_name\":\"29445k.ha.azioncdn.net\",\"active\":true,\"delivery_protocol\":\"http,https\",\"digital_certificate\":null,\"cname_access_only\":false,\"rawlogs\":false,\"cname\":[]},{\"id\":1522942414,\"name\":\"Waf Test \",\"domain_name\":\"49445k.ha.azioncdn.net\",\"active\":true,\"delivery_protocol\":\"http\",\"digital_certificate\":null,\"cname_access_only\":false,\"rawlogs\":false,\"cname\":[]},{\"id\":1522952417,\"name\":\"Meu Site\",\"domain_name\":\"59445k.ha.azioncdn.net\",\"active\":true,\"delivery_protocol\":\"http,https\",\"digital_certificate\":null,\"cname_access_only\":false,\"rawlogs\":false,\"cname\":[]},{\"id\":1525352543,\"name\":\"Testing\",\"domain_name\":\"79445k.ha.azioncdn.net\",\"active\":true,\"delivery_protocol\":\"http\",\"digital_certificate\":null,\"cname_access_only\":false,\"rawlogs\":false,\"cname\":[]},{\"id\":1528252734,\"name\":\"Dummy configuration\",\"domain_name\":\"109445k.ha.azioncdn.net\",\"active\":true,\"delivery_protocol\":\"http,https\",\"digital_certificate\":null,\"cname_access_only\":false,\"rawlogs\":false,\"cname\":[]}]"
+        },
+        "headers": {
+          "Allow": [
+            "GET, POST, OPTIONS"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, must-revalidate, max-age=0"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Language": [
+            "en"
+          ],
+          "Content-Length": [
+            "1023"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Thu, 07 Jun 2018 02:26:15 GMT"
+          ],
+          "Expires": [
+            "Thu, 07 Jun 2018 02:26:15 GMT"
+          ],
+          "Last-Modified": [
+            "Thu, 07 Jun 2018 02:26:15 GMT"
+          ],
+          "Server": [
+            "azion webserver"
+          ],
+          "Vary": [
+            "Accept-Language, Cookie"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-RateLimit-Limit": [
+            "80"
+          ],
+          "X-RateLimit-Remaining": [
+            "79"
+          ],
+          "X-RateLimit-Reset": [
+            "2018-06-07T02:27:15.186579"
+          ],
+          "x-content-type-options": [
+            "nosniff"
+          ],
+          "x-xss-protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.azion.net/content_delivery/configurations"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}
