@@ -10,7 +10,7 @@ how to use this client.
     from azion import authorize, login
 
     # Authorize and login
-    auth = authorize('myemail@mail.com', 'mysecrepassword')
+    auth = authorize('myemail@mail.com', 'mysecretpassword')
     azion = login(auth.token)
 
     # Create a configuration

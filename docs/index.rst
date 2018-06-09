@@ -33,6 +33,7 @@ You can checkout more examples throught the documentation.
     :maxdepth: 2
 
     examples/configurations
+    examples/purge
 
 Installation
 ============
