@@ -7,7 +7,11 @@
 azion-python: interacting with Azion's ReST API
 ===============================================
 
-`azion-python` is a library to interact with `Azion's ReST API`.
+**azion-python** is a library to interact with `Azion's ReST API`.
+
+.. note:: This client only supports Python 3. I recommend you to upgrade your systems to use Python 3.
+
+-------------------
 
 With this library you will be able to use the ReST API using a pythonic approach,
 handling Python objects (models) instead of raw JSON responses.
