@@ -4,6 +4,7 @@ import requests
 from azion.models import (
     Configuration, Token, as_boolean,
     decode_json, filter_none, instance_from_data, many_of)
+from azion.responses import handle_multi_status
 
 
 class AuthToken(requests.auth.AuthBase):
@@ -260,3 +261,19 @@ class Azion(object):
         response = self.session.put(url, json=filter_none(data))
         json = decode_json(response, 200)
         return instance_from_data(Configuration, json)
+
+    def purge_url(self, urls, method='delete'):
+        """Purge content of the given URLs inside
+        the `urls` list.
+
+        :param list urls:
+            List of URLs to be purged.
+        :param str method:
+            How the content will be purged.
+            Default to 'delete'.
+        """
+        url = self.session.build_url('purge', 'url')
+        response = self.session.post(
+            url, json={'urls': urls, 'method': method})
+        data = decode_json(response, 207)
+        return handle_multi_status(data, 'urls')

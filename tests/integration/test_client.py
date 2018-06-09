@@ -1,3 +1,4 @@
+import itertools
 import os
 
 from azion.client import Azion
@@ -81,3 +82,26 @@ class TestConfiguration(object):
 
         with recorder.use_cassette('Configuration_delete'):
             assert client.delete_configuration(1528252734)
+
+
+class TestPurge(object):
+
+    def test_purge_url(self):
+        client = Azion(token)
+        recorder = betamax.Betamax(client.session)
+
+        authorized_urls = [
+            'www.maugzoide.com/foo.jgp', 'www.maugzoide.com/bar.jgp']
+        forbidden_urls = ['www.notauthorize.com/mistaken.jgp']
+        urls = authorized_urls + forbidden_urls
+
+        with recorder.use_cassette('Purge_url'):
+            purge = client.purge_url(urls)
+
+        succeed_urls = itertools.chain(
+            *[response['urls'] for response in purge.succeed().values()])
+        assert sorted(authorized_urls) == sorted(list(succeed_urls))
+
+        failed_urls = itertools.chain(
+            *[response['urls'] for response in purge.failed().values()])
+        assert sorted(forbidden_urls) == sorted(list(failed_urls))

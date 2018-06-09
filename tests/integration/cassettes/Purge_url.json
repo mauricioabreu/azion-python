@@ -1,0 +1,97 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-06-09T17:47:25",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"urls\": [\"www.maugzoide.com/foo.jgp\", \"www.maugzoide.com/bar.jgp\", \"www.notauthorize.com/mistaken.jgp\"], \"method\": \"delete\"}"
+        },
+        "headers": {
+          "Accept": [
+            "application/json; version=1"
+          ],
+          "Accept-Charset": [
+            "utf-8"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "token <AUTH_TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "125"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "python-requests/2.18.4"
+          ]
+        },
+        "method": "POST",
+        "uri": "https://api.azion.net/purge/url"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "[{\"status\":\"HTTP/1.1 403 FORBIDDEN\",\"urls\":[\"www.notauthorize.com/mistaken.jgp\"],\"details\":\"Unauthorized domain for your account\"},{\"status\":\"HTTP/1.1 201 CREATED\",\"urls\":[\"www.maugzoide.com/bar.jgp\",\"www.maugzoide.com/foo.jgp\"],\"details\":\"Purge request successfully created\"}]"
+        },
+        "headers": {
+          "Allow": [
+            "POST, OPTIONS"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Language": [
+            "en"
+          ],
+          "Content-Length": [
+            "277"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Sat, 09 Jun 2018 17:47:25 GMT"
+          ],
+          "Server": [
+            "azion webserver"
+          ],
+          "Vary": [
+            "Accept-Language, Cookie"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-RateLimit-Limit": [
+            "200"
+          ],
+          "X-RateLimit-Remaining": [
+            "199"
+          ],
+          "X-RateLimit-Reset": [
+            "2018-06-09T17:48:25.395136"
+          ],
+          "x-content-type-options": [
+            "nosniff"
+          ],
+          "x-xss-protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 207,
+          "message": "MULTI-STATUS"
+        },
+        "url": "https://api.azion.net/purge/url"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

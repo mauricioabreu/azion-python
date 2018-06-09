@@ -116,3 +116,32 @@ class TestAzionClient(object):
                 'active': False
             }
         )
+
+    @mock.patch('azion.client.handle_multi_status')
+    def test_purge_url(self, mock_handler):
+        mocked_session = create_mocked_session()
+        client = Azion(session=mocked_session)
+        mock_handler.return_value = [
+            {
+                "status": "HTTP/1.1 201 CREATED",
+                "urls": [
+                    "http://www.domain.com/",
+                    "http://www.domain.com/test.js"
+                ],
+                "details": "Purge request successfully created"
+            }
+        ]
+
+        # URLs to be purged
+        urls = [
+            'www.domain.com/',
+            'www.domain.com/test.js'
+        ]
+        assert client.purge_url(urls, 'delete')
+        mocked_session.post.assert_called_once_with(
+            'https://api.azion.net/purge/url',
+            json={
+                'urls': urls,
+                'method': 'delete'
+            }
+        )
