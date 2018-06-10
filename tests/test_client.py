@@ -145,3 +145,21 @@ class TestAzionClient(object):
                 'method': 'delete'
             }
         )
+
+    def test_purge_cache_key(self):
+        mocked_session = create_mocked_session()
+        client = Azion(session=mocked_session)
+
+        # URLs to be purged
+        urls = [
+            'www.domain.com/',
+            'www.domain.com/test.js'
+        ]
+        client.purge_cache_key(urls, 'delete')
+        mocked_session.post.assert_called_once_with(
+            'https://api.azion.net/purge/cachekey',
+            json={
+                'urls': urls,
+                'method': 'delete'
+            }
+        )

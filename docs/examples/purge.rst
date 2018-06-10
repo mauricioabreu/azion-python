@@ -39,3 +39,19 @@ will exist for every status code. To filter for responses that succeed/failed, w
 
     # URLs that were not purged
     result.failed()
+
+Purge by Cache Key
+------------------
+
+You can purge using a cache key. A common example is purging an image.
+Purging a URL like static.yourdomain.com/images/image.jpg@@ will include all variations
+found after `image.jpg`
+
+.. code-block:: python
+
+    my_urls = [
+        'www.maugzoide.com/profile.jpg@@'
+        '11111a.ha.azioncdn.net/@@cookie_name=foobar'
+    ]
+
+    azion.purge_cache_key(urls)

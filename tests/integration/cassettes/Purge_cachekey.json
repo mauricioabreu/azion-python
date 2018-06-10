@@ -1,0 +1,97 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-06-10T01:42:23",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"urls\": [\"www.maugzoide.com/@@cookie_name=foobar\", \"www.maugzoide.com/profile.jpg@@\"], \"method\": \"delete\"}"
+        },
+        "headers": {
+          "Accept": [
+            "application/json; version=1"
+          ],
+          "Accept-Charset": [
+            "utf-8"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "token <AUTH_TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "107"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "python-requests/2.18.4"
+          ]
+        },
+        "method": "POST",
+        "uri": "https://api.azion.net/purge/cachekey"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"detail\":\"Purge request successfully created\"}"
+        },
+        "headers": {
+          "Allow": [
+            "POST, OPTIONS"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Language": [
+            "en"
+          ],
+          "Content-Length": [
+            "47"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Sun, 10 Jun 2018 01:42:23 GMT"
+          ],
+          "Server": [
+            "azion webserver"
+          ],
+          "Vary": [
+            "Accept-Language, Cookie"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-RateLimit-Limit": [
+            "200"
+          ],
+          "X-RateLimit-Remaining": [
+            "199"
+          ],
+          "X-RateLimit-Reset": [
+            "2018-06-10T01:43:23.333413"
+          ],
+          "x-content-type-options": [
+            "nosniff"
+          ],
+          "x-xss-protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 201,
+          "message": "CREATED"
+        },
+        "url": "https://api.azion.net/purge/cachekey"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

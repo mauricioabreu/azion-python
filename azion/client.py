@@ -277,3 +277,19 @@ class Azion(object):
             url, json={'urls': urls, 'method': method})
         data = decode_json(response, 207)
         return handle_multi_status(data, 'urls')
+
+    def purge_cache_key(self, urls, method='delete'):
+        """Purge content of the given URLs inside
+        the `urls` list. With this purge endpoint you
+        can pass `cache keys`.
+
+        :param list urls:
+            List of URLs to be purged.
+        :param str method:
+            How the content will be purged.
+            Default to 'delete'.
+        """
+        url = self.session.build_url('purge', 'cachekey')
+        response = self.session.post(
+            url, json={'urls': urls, 'method': method})
+        return as_boolean(response, 201)

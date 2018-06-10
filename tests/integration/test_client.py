@@ -105,3 +105,15 @@ class TestPurge(object):
         failed_urls = itertools.chain(
             *[response['urls'] for response in purge.failed().values()])
         assert sorted(forbidden_urls) == sorted(list(failed_urls))
+
+    def test_purge_cache_key(self):
+        client = Azion(token)
+        recorder = betamax.Betamax(client.session)
+
+        urls = [
+            'www.maugzoide.com/@@cookie_name=foobar',
+            'www.maugzoide.com/profile.jpg@@'
+        ]
+
+        with recorder.use_cassette('Purge_cachekey'):
+            assert client.purge_cache_key(urls)
