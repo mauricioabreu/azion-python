@@ -163,3 +163,19 @@ class TestAzionClient(object):
                 'method': 'delete'
             }
         )
+
+    def test_purge_wildcard(self):
+        mocked_session = create_mocked_session()
+        client = Azion(session=mocked_session)
+
+        # URL to be purged
+        url = 'www.domain.com/photos/*'
+
+        client.purge_wildcard(url, 'delete')
+        mocked_session.post.assert_called_once_with(
+            'https://api.azion.net/purge/wildcard',
+            json={
+                'urls': [url],
+                'method': 'delete'
+            }
+        )

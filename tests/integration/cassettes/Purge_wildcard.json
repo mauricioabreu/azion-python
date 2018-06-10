@@ -1,0 +1,97 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-06-10T03:00:21",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"urls\": [\"www.maugzoide.com/static/img/*\"], \"method\": \"delete\"}"
+        },
+        "headers": {
+          "Accept": [
+            "application/json; version=1"
+          ],
+          "Accept-Charset": [
+            "utf-8"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "token <AUTH_TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "64"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "python-requests/2.18.4"
+          ]
+        },
+        "method": "POST",
+        "uri": "https://api.azion.net/purge/wildcard"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"detail\":\"Purge request successfully created\"}"
+        },
+        "headers": {
+          "Allow": [
+            "POST, OPTIONS"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Language": [
+            "en"
+          ],
+          "Content-Length": [
+            "47"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Sun, 10 Jun 2018 03:00:21 GMT"
+          ],
+          "Server": [
+            "azion webserver"
+          ],
+          "Vary": [
+            "Accept-Language, Cookie"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-RateLimit-Limit": [
+            "2000"
+          ],
+          "X-RateLimit-Remaining": [
+            "1999"
+          ],
+          "X-RateLimit-Reset": [
+            "2018-06-11T03:00:21.267566"
+          ],
+          "x-content-type-options": [
+            "nosniff"
+          ],
+          "x-xss-protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 201,
+          "message": "CREATED"
+        },
+        "url": "https://api.azion.net/purge/wildcard"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

@@ -117,3 +117,12 @@ class TestPurge(object):
 
         with recorder.use_cassette('Purge_cachekey'):
             assert client.purge_cache_key(urls)
+
+    def test_purge_wildcard(self):
+        client = Azion(token)
+        recorder = betamax.Betamax(client.session)
+
+        url = 'www.maugzoide.com/static/img/*'
+
+        with recorder.use_cassette('Purge_wildcard'):
+            assert client.purge_wildcard(url)

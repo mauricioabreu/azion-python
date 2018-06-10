@@ -55,3 +55,15 @@ found after `image.jpg`
     ]
 
     azion.purge_cache_key(urls)
+
+Purge Wildcard
+--------------
+
+Use a wildcard purge to delete a list of objects from the cache.
+This function accepts one URL only.
+
+.. code-block:: python
+
+    url = 'www.maugzoide.com/static/img/*'
+
+    azion.purge_wildcard(url)

@@ -293,3 +293,19 @@ class Azion(object):
         response = self.session.post(
             url, json={'urls': urls, 'method': method})
         return as_boolean(response, 201)
+
+    def purge_wildcard(self, url, method='delete'):
+        """Purge content of the given URL.
+        With this purge endpoint you can use a wildcard (*)
+        to remove all objects matching the URL.
+
+        :param str url:
+            Wildcard URL to be purged.
+        :param str method:
+            How the content will be purged.
+            Default to 'delete'.
+        """
+        api_url = self.session.build_url('purge', 'wildcard')
+        response = self.session.post(
+            api_url, json={'urls': [url], 'method': method})
+        return as_boolean(response, 201)
