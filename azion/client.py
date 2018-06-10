@@ -1,6 +1,7 @@
 """Client to access and interact with Azion's API."""
 import requests
 
+from azion.__metadata__ import __version__ as version
 from azion.models import (
     Configuration, Token, as_boolean,
     decode_json, filter_none, instance_from_data, many_of)
@@ -31,7 +32,8 @@ class Session(requests.Session):
         self.headers.update({
             'Accept': 'application/json; version=1',
             'Accept-Charset': 'utf-8',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'User-Agent': f'azion-python/{version}'
         })
         self.base_url = 'https://api.azion.net'
 

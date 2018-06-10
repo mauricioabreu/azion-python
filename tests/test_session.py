@@ -10,6 +10,7 @@ class TestSession(object):
         assert session.headers['Accept'] == 'application/json; version=1'
         assert session.headers['Accept-Charset'] == 'utf-8'
         assert session.headers['Content-Type'] == 'application/json'
+        assert session.headers['User-Agent'] == 'azion-python/0.0.1'
 
     def test_token_auth(self):
         session = Session()
