@@ -21,6 +21,7 @@ class PrettyJSONSerializer(JSONSerializer):
         )
 
 
+record_mode = os.environ.get('BETAMAX_RECORD_MODE', 'once')
 token = os.environ.get('AZ_TOKEN', 'foobar')
 
 # Register pretty JSON serializer
@@ -34,3 +35,5 @@ with betamax.Betamax.configure() as config:
     config.define_cassette_placeholder('<AUTH_TOKEN>', token)
     # Save formatted JSON instead of one line files
     config.default_cassette_options['serialize_with'] = 'prettyjson'
+    # Configurable record mode via environment variable
+    config.default_cassette_options['record_mode'] = record_mode
