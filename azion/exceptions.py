@@ -88,7 +88,7 @@ class MethodNotAllowed(AzionError):
     pass
 
 
-class NotAcceptable(object):
+class NotAcceptable(AzionError):
     """Indicate that a response matching the list of acceptable values
     defined in Accept-Charset and Accept-Language cannot be served.
 
