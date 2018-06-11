@@ -3,7 +3,7 @@ import requests
 
 from azion.__metadata__ import __version__ as version
 from azion.models import (
-    Configuration, Token, as_boolean,
+    Configuration, Origin, Token, as_boolean,
     decode_json, filter_none, instance_from_data, many_of)
 from azion.responses import handle_multi_status
 
@@ -231,6 +231,8 @@ class Azion(object):
         in the request will be replaced for default values. Consider using
         :func:`~partial_update_configuration`
 
+        :param int configuration_id:
+            Configuration ID
         :param str name: human-readable name for the configuration.
         :param list cname: a list os strings containing all cnames.
             Default empty string.
@@ -311,3 +313,15 @@ class Azion(object):
         response = self.session.post(
             api_url, json={'urls': [url], 'method': method})
         return as_boolean(response, 201)
+
+    def list_origins(self, configuration_id):
+        """List origins of the given configuration.
+
+        :param int configuration_id:
+            Configuration ID
+        """
+        url = self.session.build_url(
+            'content_delivery', 'configurations', configuration_id, 'origins')
+        response = self.session.get(url)
+        data = decode_json(response, 200)
+        return many_of(Origin, data)

@@ -179,3 +179,12 @@ class TestAzionClient(object):
                 'method': 'delete'
             }
         )
+
+    def test_list_origins(self):
+        mocked_session = create_mocked_session()
+        client = Azion(session=mocked_session)
+
+        client.list_origins(1)
+        mocked_session.get.assert_called_once_with(
+            'https://api.azion.net/content_delivery/configurations/1/origins'
+        )

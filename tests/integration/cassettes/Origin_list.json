@@ -1,0 +1,103 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-06-11T01:43:44",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": [
+            "application/json; version=1"
+          ],
+          "Accept-Charset": [
+            "utf-8"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "token <AUTH_TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "azion-python/0.0.1"
+          ]
+        },
+        "method": "GET",
+        "uri": "https://api.azion.net/content_delivery/configurations/1501191440/origins"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "[{\"id\":2016,\"name\":\"Default Origin\",\"origin_path\":\"\",\"origin_type\":\"single_origin\",\"method\":\"\",\"host_header\":\"$host\",\"origin_protocol_policy\":\"preserve\",\"addresses\":[{\"address\":\"127.0.0.1\",\"weight\":null,\"server_role\":\"primary\",\"is_active\":true}],\"connection_timeout\":60,\"timeout_between_bytes\":120}]"
+        },
+        "headers": {
+          "Allow": [
+            "GET, POST, OPTIONS"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, must-revalidate, max-age=0"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Language": [
+            "en"
+          ],
+          "Content-Length": [
+            "299"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Mon, 11 Jun 2018 01:43:44 GMT"
+          ],
+          "Expires": [
+            "Mon, 11 Jun 2018 01:43:44 GMT"
+          ],
+          "Last-Modified": [
+            "Mon, 11 Jun 2018 01:43:44 GMT"
+          ],
+          "Server": [
+            "azion webserver"
+          ],
+          "Vary": [
+            "Accept-Language, Cookie"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-RateLimit-Limit": [
+            "80"
+          ],
+          "X-RateLimit-Remaining": [
+            "79"
+          ],
+          "X-RateLimit-Reset": [
+            "2018-06-11T01:44:44.572354"
+          ],
+          "x-content-type-options": [
+            "nosniff"
+          ],
+          "x-xss-protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.azion.net/content_delivery/configurations/1501191440/origins"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

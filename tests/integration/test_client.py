@@ -2,7 +2,7 @@ import itertools
 import os
 
 from azion.client import Azion
-from azion.models import Configuration
+from azion.models import Configuration, Origin
 
 import betamax
 
@@ -126,3 +126,18 @@ class TestPurge(object):
 
         with recorder.use_cassette('Purge_wildcard'):
             assert client.purge_wildcard(url)
+
+
+class TestOrigin(object):
+
+    def test_list_origins(self):
+        client = Azion(token)
+        recorder = betamax.Betamax(client.session)
+
+        with recorder.use_cassette('Origin_list'):
+            origins = client.list_origins(1501191440)
+
+        assert origins
+        assert isinstance(origins, list)
+        assert all(isinstance(origin, Origin)
+                   for origin in origins)

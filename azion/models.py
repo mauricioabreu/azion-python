@@ -158,3 +158,35 @@ class Configuration(object):
         self.cname = data['cname']
         self.cname_access_only = data['cname_access_only']
         self.rawlogs = data['rawlogs']
+
+
+class Address(object):
+
+    def __init__(self, data):
+        self.load_data(data)
+
+    def load_data(self, data):
+        self.address = data['address']
+        self.weight = data['weight']
+        self.server_role = data['server_role']
+        self.is_active = data['is_active']
+
+
+class Origin(object):
+
+    def __init__(self, data):
+        self.load_data(data)
+
+    def __repr__(self):
+        return f'<Origin [{self.name}]>'
+
+    def load_data(self, data):
+        self.id = data['id']
+        self.name = data['name']
+        self.origin_type = data['origin_type']
+        self.method = data['method']
+        self.host_header = data['host_header']
+        self.origin_protocol_policy = data['origin_protocol_policy']
+        self.addresses = many_of(Address, data['addresses'])
+        self.connection_timeout = data['connection_timeout']
+        self.timeout_between_bytes = data['timeout_between_bytes']
