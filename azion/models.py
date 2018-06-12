@@ -161,6 +161,22 @@ class Configuration(object):
 
 
 class Address(object):
+    """Model representing an Address - a related resource
+    of `Origin` model.
+
+    .. attribute:: address
+        Hostname (FQDN) or IP address.
+
+    .. attribute:: weigth
+        Define how much traffic a server can handle,
+        in comparison to the others (Load Balancer).
+
+    .. attribute:: server_role
+        Define how this origin will be used.
+
+    .. attribute:: is_active
+        Define whether this origin is active.
+    """
 
     def __init__(self, data):
         self.load_data(data)
@@ -173,6 +189,40 @@ class Address(object):
 
 
 class Origin(object):
+    """Model representing the Origin retrieved
+    from the API.
+
+    .. attribute:: id
+        Origin's unique ID.
+
+    .. attribute:: name
+        Origin name
+
+    .. attribute:: origin_type
+        Origin type.
+
+    .. attribute:: method
+        Define how the CDN will handle load balancer
+        connections.
+
+    .. attribute:: host_header
+        Host header will be sent to your origin.
+
+    .. attribute:: origin_protocol_policy
+        Define the protocol CDN will use to connect
+        to your origin.
+
+    .. attribute:: addresses
+        A list of `Address` resources.
+        These are the address used by Azion CDN to
+        access the content will be cached and delivered.
+
+    .. attribute:: connection_timeout
+        Timeout when connection to the origin (seconds).
+
+    .. attribute:: timeout_between_bytes
+        Timeout for a connection without data transferring (seconds).
+    """
 
     def __init__(self, data):
         self.load_data(data)
