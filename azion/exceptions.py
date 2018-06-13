@@ -117,7 +117,7 @@ error_handlers = {
     401: Unauthorized,
     403: Forbidden,
     404: NotFound,
-    404: MethodNotAllowed,
+    405: MethodNotAllowed,
     406: NotAcceptable,
     409: Conflict,
     429: TooManyRequests
