@@ -36,8 +36,7 @@ class AzionError(AzionException):
         super().__init__(self, response)
         self.response = response
         self.status_code = response.status_code
-        response_errors = response.json()
-        self.errors = response_errors.get('detail', [])
+        self.errors = response.json()
 
     def __repr__(self):
         return f'<{self.__class__.__name__} [{self.status_code}]>'

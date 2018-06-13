@@ -17,7 +17,7 @@ class TestExceptions(object):
         response.status_code = 400
         error = handle_error(response)
         assert isinstance(error, BadRequest)
-        assert error.errors == ['Invalid foo']
+        assert error.errors == {'detail': ['Invalid foo']}
         assert error.status_code == 400
         assert response == error.response
         assert repr(error) == '<BadRequest [400]>'
