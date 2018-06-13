@@ -188,3 +188,39 @@ class TestAzionClient(object):
         mocked_session.get.assert_called_once_with(
             'https://api.azion.net/content_delivery/configurations/1/origins'
         )
+
+    def test_create_origin(self):
+        mocked_session = create_mocked_session()
+        client = Azion(session=mocked_session)
+
+        client.create_origin(
+            configuration_id=1,
+            name='Dummy origin',
+            origin_type='single_origin',
+            method=None,
+            host_header='www.example.com',
+            origin_protocol_policy='http',
+            addresses=[{
+                'address': 'www.myorigin.com',
+                'weight': None,
+                'server_role': 'primary',
+            }],
+            connection_timeout=60,
+            timeout_between_bytes=120
+        )
+        mocked_session.post.assert_called_once_with(
+            'https://api.azion.net/content_delivery/configurations/1/origins',
+            json={
+                'name': 'Dummy origin',
+                'origin_type': 'single_origin',
+                'host_header': 'www.example.com',
+                'origin_protocol_policy': 'http',
+                'addresses': [{
+                    'address': 'www.myorigin.com',
+                    'weight': None,
+                    'server_role': 'primary',
+                }],
+                'connection_timeout': 60,
+                'timeout_between_bytes': 120
+            }
+        )

@@ -325,3 +325,25 @@ class Azion(object):
         response = self.session.get(url)
         data = decode_json(response, 200)
         return many_of(Origin, data)
+
+    def create_origin(self, configuration_id, name, origin_type,
+                      method, host_header,
+                      origin_protocol_policy, addresses,
+                      connection_timeout, timeout_between_bytes):
+        """Create an origin.
+        """
+        data = {
+            'name': name,
+            'origin_type': origin_type,
+            'method': method,
+            'host_header': host_header,
+            'origin_protocol_policy': origin_protocol_policy,
+            'addresses': addresses,
+            'connection_timeout': connection_timeout,
+            'timeout_between_bytes': timeout_between_bytes
+        }
+        url = self.session.build_url(
+            'content_delivery', 'configurations', configuration_id, 'origins')
+        response = self.session.post(url, json=filter_none(data))
+        data = decode_json(response, 201)
+        return instance_from_data(Origin, data)

@@ -1,0 +1,97 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-06-13T03:15:23",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"name\": \"Dummy origin\", \"origin_type\": \"single_origin\", \"host_header\": \"www.example.com\", \"origin_protocol_policy\": \"http\", \"addresses\": [{\"address\": \"www.myorigin.com\", \"server_role\": \"primary\"}], \"connection_timeout\": 60, \"timeout_between_bytes\": 120}"
+        },
+        "headers": {
+          "Accept": [
+            "application/json; version=1"
+          ],
+          "Accept-Charset": [
+            "utf-8"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "token <AUTH_TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "254"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "azion-python/0.0.1"
+          ]
+        },
+        "method": "POST",
+        "uri": "https://api.azion.net/content_delivery/configurations/1501191440/origins"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"id\":3896,\"name\":\"Dummy origin\",\"origin_path\":\"\",\"origin_type\":\"single_origin\",\"method\":\"\",\"host_header\":\"www.example.com\",\"origin_protocol_policy\":\"http\",\"addresses\":[{\"address\":\"www.myorigin.com\",\"weight\":null,\"server_role\":\"primary\",\"is_active\":true}],\"connection_timeout\":60,\"timeout_between_bytes\":120}"
+        },
+        "headers": {
+          "Allow": [
+            "GET, POST, OPTIONS"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Language": [
+            "en"
+          ],
+          "Content-Length": [
+            "308"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Wed, 13 Jun 2018 03:15:23 GMT"
+          ],
+          "Server": [
+            "azion webserver"
+          ],
+          "Vary": [
+            "Accept-Language, Cookie"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-RateLimit-Limit": [
+            "20"
+          ],
+          "X-RateLimit-Remaining": [
+            "18"
+          ],
+          "X-RateLimit-Reset": [
+            "2018-06-13T03:16:23.735134"
+          ],
+          "x-content-type-options": [
+            "nosniff"
+          ],
+          "x-xss-protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 201,
+          "message": "CREATED"
+        },
+        "url": "https://api.azion.net/content_delivery/configurations/1501191440/origins"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

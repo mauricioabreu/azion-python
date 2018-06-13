@@ -141,3 +141,35 @@ class TestOrigin(object):
         assert isinstance(origins, list)
         assert all(isinstance(origin, Origin)
                    for origin in origins)
+
+    def test_create_origin(self):
+        client = Azion(token)
+        recorder = betamax.Betamax(client.session)
+
+        with recorder.use_cassette('Origin_create'):
+            origin = client.create_origin(
+                configuration_id=1501191440,
+                name='Dummy origin', origin_type='single_origin',
+                method=None, host_header='www.example.com',
+                origin_protocol_policy='http',
+                addresses=[{
+                    'address': 'www.myorigin.com',
+                    #'weight': None,
+                    'server_role': 'primary',
+                }],
+                connection_timeout=60,
+                timeout_between_bytes=120
+            )
+
+        assert isinstance(origin, Origin)
+        assert origin.name == 'Dummy origin'
+        assert origin.origin_type == 'single_origin'
+        assert origin.method == ''
+        assert origin.host_header == 'www.example.com'
+        assert origin.origin_protocol_policy == 'http'
+        assert origin.addresses[0].address == 'www.myorigin.com'
+        assert origin.addresses[0].weight is None
+        assert origin.addresses[0].server_role == 'primary'
+        assert origin.addresses[0].is_active is True
+        assert origin.connection_timeout == 60
+        assert origin.timeout_between_bytes == 120
